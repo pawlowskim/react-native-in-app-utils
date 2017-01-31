@@ -131,6 +131,8 @@ restoreCompletedTransactionsFailedWithError:(NSError *)error
                                        };
             
             [productsArrayForJS addObject:purchase];
+        } else if(transaction.transactionState == SKPaymentTransactionStateRestored){
+            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         }
     }
     
